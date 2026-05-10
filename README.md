@@ -4,7 +4,7 @@ Comando para verificar se tenho acesso a outra na máquina na rede:
 
 ping \-c 3 192.168.56.101
 
-\!\[\](images/imagem1.png)
+\!\[\](./images/imagem1.png)
 
 ok
 
